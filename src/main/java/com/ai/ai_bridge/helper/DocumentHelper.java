@@ -1,8 +1,10 @@
 package com.ai.ai_bridge.helper;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.ai.document.Document;
 
-public class DocumentHelper {
-    private static final Logger logger = LoggerFactory.getLogger(DocumentHelper.class);
+import java.io.File;
+import java.util.List;
+
+public interface DocumentHelper {
+    List<Document> readPDF(File file);
 }
