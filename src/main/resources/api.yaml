@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: AI Bridge
+  version: 1.0.0
+  description: Communicate with different AI Model via this API
+
+paths:
+  /ai/message:
+    post:
+      summary: Process message request
+      description: Process message request with selected AI model and return the response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MessageRequest'
+      responses:
+        '200':
+          description: Successfully processed audio
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '413':
+          description: Payload too large
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    ModelName:
+      type: string
+      enum:
+        - openai
+        - ollama
+      description: AI model you would like to use
+
+    MessageRequest:
+      type: object
+      properties:
+        modelName:
+          $ref: '#/components/schemas/ModelName'
+        message:
+          type: string
+          example: "What is the capital of United Kingdom?"
+
+      required:
+        - modelName
+        - message
+
+    MessageResponse:
+      type: object
+      properties:
+        messageResponse:
+          type: string
+          example: "The capital of the United Kingdom is London."
+        timestamp:
+          type: string
+          format: date-time
+          example: "2024-02-20T12:00:00Z"
+
+
+
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "error"
+        message:
+          type: string
+          example: "Error processing data"
+        timestamp:
+          type: string
+          format: date-time
+          example: "2024-02-20T12:00:00Z"

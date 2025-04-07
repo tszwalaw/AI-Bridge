@@ -26,8 +26,10 @@ To install ollama in Mac
 ```
 brew install ollama
 ollama pull llama3.2 3b
-export OLLAMA_HOST=127.0.0.1:3000
 ollama pull nomic-embed-text
+
+export OLLAMA_HOST=127.0.0.1:3000
+ollama serve &
 ollama run llama3.2
 ```
 
