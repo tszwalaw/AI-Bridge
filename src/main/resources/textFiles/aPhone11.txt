@@ -1,0 +1,8 @@
+Q: what is the product name
+A: aPhone 11
+
+Q: what is the display size?
+A: 1-inch
+
+Q: what is the price?
+A: 888

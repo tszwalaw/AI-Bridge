@@ -16,6 +16,7 @@ public class ChatConfig {
     @Value("${default.chat.model.name}")
     private String chatModelName;
 
+
     @Bean
     VectorStore ollamaVectorStore(@Qualifier("ollamaEmbeddingModel") EmbeddingModel embeddingModel){
         return SimpleVectorStore.builder(embeddingModel)

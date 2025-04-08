@@ -26,71 +26,80 @@
 		<tag/>
 		<url/>
 	</scm>
+	
 	<properties>
 		<java.version>17</java.version>
+		<spring-boot.version>3.2.2</spring-boot.version>
+		<spring-ai.version>1.0.0-M6</spring-ai.version>
+		<springdoc-openapi.version>2.3.0</springdoc-openapi.version>
+		<jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+		<swagger-annotations.version>2.2.20</swagger-annotations.version>
+		<javax-validation.version>2.0.1.Final</javax-validation.version>
+		<jakarta-servlet.version>6.0.0</jakarta-servlet.version>
+		<jakarta-validation.version>3.0.2</jakarta-validation.version>
+		<hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+		<pdfbox.version>2.0.27</pdfbox.version>
+		<junit-jupiter.version>5.10.1</junit-jupiter.version>
+		<mockito-junit.version>4.5.1</mockito-junit.version>
+		<openapi-generator.version>7.0.1</openapi-generator.version>
 	</properties>
+
 	<dependencies>
 		<!-- Spring Boot Starter Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>3.2.2</version>  <!-- or whatever version matches your Spring Boot version -->
+			<version>${spring-boot.version}</version>
 		</dependency>
 
 		<!-- Spring Boot Starter -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<version>3.2.2</version>
+			<version>${spring-boot.version}</version>
 		</dependency>
 
 		<!-- Spring Boot Starter Test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>3.2.2</version>
+			<version>${spring-boot.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<!-- Sprint AI -->
-		<!--		<dependency>-->
-		<!--			<groupId>org.springframework.ai</groupId>-->
-		<!--			<artifactId>spring-ai-core</artifactId>-->
-		<!--			<version>1.0.0-M5</version>-->
-		<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-			<version>1.0.0-M6</version>
+			<version>${spring-ai.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-			<version>1.0.0-M6</version>
+			<version>${spring-ai.version}</version>
 		</dependency>
 
 		<!-- OpenAPI dependencies -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.3.0</version>
+			<version>${springdoc-openapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.openapitools</groupId>
 			<artifactId>jackson-databind-nullable</artifactId>
-			<version>0.2.6</version>
+			<version>${jackson-databind-nullable.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
 			<artifactId>swagger-annotations</artifactId>
-			<version>2.2.20</version>
+			<version>${swagger-annotations.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
+			<version>${javax-validation.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -101,48 +110,48 @@
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
-			<version>6.0.0</version>
+			<version>${jakarta-servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		
 		<!-- Jakarta Validation API -->
 		<dependency>
 			<groupId>jakarta.validation</groupId>
 			<artifactId>jakarta.validation-api</artifactId>
-			<version>3.0.2</version>
+			<version>${jakarta-validation.version}</version>
 		</dependency>
 
 		<!-- validation dependency for Jakarta -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>8.0.1.Final</version>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
 
 		<!-- PDF reader -->
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox</artifactId>
-			<version>2.0.27</version>
+			<version>${pdfbox.version}</version>
 		</dependency>
 
 		<!-- Junit -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.10.1</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.10.1</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-junit-jupiter</artifactId>
-			<version>4.5.1</version>
+			<version>${mockito-junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -176,7 +185,7 @@
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
-				<version>7.0.1</version>
+				<version>${openapi-generator.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -189,7 +198,6 @@
 								<useLombok>true</useLombok>
 								<useSpringBoot3>true</useSpringBoot3>
 								<documentationProvider>none</documentationProvider>
-								<!--								<dateLibrary>java17</dateLibrary>-->
 								<java17>true</java17>
 								<interfaceOnly>true</interfaceOnly>
 								<delegatePattern>true</delegatePattern>
@@ -211,7 +219,7 @@
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
 				<artifactId>spring-ai-bom</artifactId>
-				<version>1.0.0-M6</version>
+				<version>${spring-ai.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
