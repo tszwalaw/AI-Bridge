@@ -6,5 +6,5 @@ import java.io.File;
 import java.util.List;
 
 public interface DocumentHelper {
-    List<Document> readPDF(File file);
+    List<Document> readData(File file);
 }

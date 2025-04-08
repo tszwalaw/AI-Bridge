@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
+import com.ai.ai_bridge.config.DataConfig;
 
 import java.io.File;
 import java.util.List;
@@ -15,34 +16,36 @@ import java.util.List;
 @Component
 public class VectorStoreHelperImpl implements VectorStoreHelper {
 
-    private static final Logger logger = LoggerFactory.getLogger(DocumentHelperImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(VectorStoreHelperImpl.class);
     private final DocumentHelper documentHelper;
     private final VectorStore ollamaVectorStore;
+    private final DataConfig dataConfig;
 
-    public VectorStoreHelperImpl(DocumentHelper documentHelper, VectorStore ollamaVectorStore) {
+    public VectorStoreHelperImpl(DocumentHelper documentHelper, VectorStore ollamaVectorStore, DataConfig dataConfig) {
         this.documentHelper = documentHelper;
         this.ollamaVectorStore = ollamaVectorStore;
+        this.dataConfig = dataConfig;
     }
 
     private void initialiseVectorStore() {
-        File pdfFolder = new File("src/main/resources/pdf");
+        File filesFolder = new File(dataConfig.getStoragePath());
 
-        if (!pdfFolder.exists() || !pdfFolder.isDirectory()) {
+        if (!filesFolder.exists() || !filesFolder.isDirectory()) {
             logger.error("The specified directory does not exist.");
             return;
         }
 
         // Loop through all files in the folder
-        File[] files = pdfFolder.listFiles((dir, name) -> name.endsWith(".pdf"));
+        File[] files = filesFolder.listFiles((dir, name) -> name.endsWith(".txt"));
 
         if (files != null && files.length > 0) {
             for (File pdfFile : files) {
                 logger.info("Processing file: {}", pdfFile.getName());
-                List<Document> documents = documentHelper.readPDF(pdfFile);
+                List<Document> documents = documentHelper.readData(pdfFile);
                 ollamaVectorStore.add(documents);
             }
         } else {
-            logger.warn("No PDF files found in the pdf folder.");
+            logger.warn("No files found in the files folder.");
         }
     }
 
