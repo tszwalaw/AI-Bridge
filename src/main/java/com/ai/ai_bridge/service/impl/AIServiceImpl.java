@@ -1,5 +1,6 @@
 package com.ai.ai_bridge.service.impl;
 
+import com.ai.ai_bridge.config.ChatConfig;
 import com.ai.ai_bridge.helper.VectorStoreHelper;
 import com.ai.ai_bridge.model.MessageRequest;
 import com.ai.ai_bridge.model.MessageResponse;
@@ -29,14 +30,17 @@ public class AIServiceImpl implements AIService{
     private final ChatClient ollamaChatClient;
     private final VectorStoreHelper vectorStoreHelper;
 
+    private final ChatConfig chatConfig;
+
     @Autowired
-    public AIServiceImpl(OpenAiChatModel openAiChatModel, OllamaChatModel ollamaChatModel, VectorStoreHelper vectorStoreHelper){
+    public AIServiceImpl(OpenAiChatModel openAiChatModel, OllamaChatModel ollamaChatModel, VectorStoreHelper vectorStoreHelper, ChatConfig chatConfig){
         this.openAiChatModel = openAiChatModel;
         this.ollamaChatModel = ollamaChatModel;
         this.openAIChatClient = ChatClient.create(openAiChatModel);
         this.ollamaChatClient = ChatClient.create(ollamaChatModel);
         this.vectorStoreHelper = vectorStoreHelper;
 
+        this.chatConfig = chatConfig;
     }
 
     @Override
@@ -71,8 +75,14 @@ public class AIServiceImpl implements AIService{
             ChatClient selectedChatClient = getChatClient(request.getModelName());
             VectorStore vectorStore = vectorStoreHelper.getVectorStore(request.getModelName());
 
+            SearchRequest searchRequest = SearchRequest.builder()
+                    .query(request.getMessage())
+                    .topK(20)
+                    .similarityThreshold(0.7)
+                    .build();
+
             String response = selectedChatClient.prompt()
-                    .advisors(new QuestionAnswerAdvisor(vectorStore, new SearchRequest()))
+                    .advisors(new QuestionAnswerAdvisor(vectorStore, searchRequest))
                     .user(request.getMessage())
                     .call()
                     .content();

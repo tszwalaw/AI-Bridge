@@ -3,6 +3,7 @@ package com.ai.ai_bridge.helper.impl;
 import com.ai.ai_bridge.helper.DocumentHelper;
 import com.ai.ai_bridge.helper.VectorStoreHelper;
 import com.ai.ai_bridge.model.ModelName;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
@@ -39,9 +40,9 @@ public class VectorStoreHelperImpl implements VectorStoreHelper {
         File[] files = filesFolder.listFiles((dir, name) -> name.endsWith(".txt"));
 
         if (files != null && files.length > 0) {
-            for (File pdfFile : files) {
-                logger.info("Processing file: {}", pdfFile.getName());
-                List<Document> documents = documentHelper.readData(pdfFile);
+            for (File file : files) {
+                logger.info("Processing file: {}", file.getName());
+                List<Document> documents = documentHelper.readData(file);
                 ollamaVectorStore.add(documents);
             }
         } else {
@@ -53,7 +54,6 @@ public class VectorStoreHelperImpl implements VectorStoreHelper {
     public VectorStore getVectorStore(ModelName modelName) {
         logger.debug("Getting vector store for: {}", modelName);
         initialiseVectorStore();
-
         return switch (modelName) {
             //case OPENAI -> openAIVectorStore;
             case OLLAMA -> ollamaVectorStore;

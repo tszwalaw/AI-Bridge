@@ -1,0 +1,8 @@
+{
+  "product": {
+    "name": "aPhone 13",
+    "display_size": "3-inch",
+    "price": 8893,
+    "number_of_product_sold": 1000003
+  }
+}

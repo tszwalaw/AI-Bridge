@@ -38,7 +38,6 @@
 		<jakarta-servlet.version>6.0.0</jakarta-servlet.version>
 		<jakarta-validation.version>3.0.2</jakarta-validation.version>
 		<hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-		<pdfbox.version>2.0.27</pdfbox.version>
 		<junit-jupiter.version>5.10.1</junit-jupiter.version>
 		<mockito-junit.version>4.5.1</mockito-junit.version>
 		<openapi-generator.version>7.0.1</openapi-generator.version>
@@ -126,13 +125,6 @@
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
-		</dependency>
-
-		<!-- PDF reader -->
-		<dependency>
-			<groupId>org.apache.pdfbox</groupId>
-			<artifactId>pdfbox</artifactId>
-			<version>${pdfbox.version}</version>
 		</dependency>
 
 		<!-- Junit -->
