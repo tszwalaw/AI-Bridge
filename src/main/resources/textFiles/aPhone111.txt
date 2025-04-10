@@ -1,0 +1,8 @@
+{
+  "product": {
+    "name": "aPhone 111",
+    "display_size": "11-inch",
+    "price": 8888,
+    "number_of_product_sold": 100000
+  }
+}

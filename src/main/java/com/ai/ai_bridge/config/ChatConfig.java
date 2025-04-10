@@ -16,6 +16,9 @@ public class ChatConfig {
     @Value("${default.chat.model.name}")
     private String chatModelName;
 
+    @Value("${system.prompt}")
+    private String systemPrompt;
+
 
     @Bean
     VectorStore ollamaVectorStore(@Qualifier("ollamaEmbeddingModel") EmbeddingModel embeddingModel){

@@ -1,8 +1,8 @@
-Q: what is the product name
-A: aPhone 900
-
-Q: what is the display size?
-A: 10-inch
-
-Q: what is the price?
-A: 10000
+{
+  "product": {
+    "name": "aPhone 900",
+    "display_size": "10-inch",
+    "price": 99999,
+     "number_of_product_sold": 1000000000
+  }
+}
