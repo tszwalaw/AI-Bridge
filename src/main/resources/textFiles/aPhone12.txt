@@ -1,8 +1,0 @@
-{
-  "product": {
-    "name": "aPhone 12",
-    "display_size": "2-inch",
-    "price": 889,
-    "number_of_product_sold": 100000
-  }
-}

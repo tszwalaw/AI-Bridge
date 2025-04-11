@@ -1,0 +1,8 @@
+{
+  "stock": {
+    "name": "Apple",
+    "description": "Apple's stock related data information",
+    "price": 190,
+    "trade_count": 1000000000
+  }
+}

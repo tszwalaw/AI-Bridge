@@ -1,0 +1,8 @@
+{
+  "stock": {
+    "name": "Anson limited",
+    "description": "Anson limited's stock related data information",
+    "price": 0.1,
+    "trade_count": 0
+  }
+}
