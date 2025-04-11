@@ -1,8 +1,0 @@
-{
-  "product": {
-    "name": "aPhone 11",
-    "display_size": "1-inch",
-    "price": 888,
-    "number_of_product_sold": 10000
-  }
-}

@@ -1,0 +1,8 @@
+{
+  "stock": {
+    "name": "unreal",
+    "description": "unreal's stock related data information",
+    "price": 0.2,
+    "trade_count": 1
+  }
+}

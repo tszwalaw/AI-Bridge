@@ -1,8 +1,0 @@
-{
-  "product": {
-    "name": "aPhone 900",
-    "display_size": "10-inch",
-    "price": 99999,
-     "number_of_product_sold": 1000000000
-  }
-}
